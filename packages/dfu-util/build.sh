@@ -1,0 +1,9 @@
+TERMUX_PKG_HOMEPAGE=http://dfu-util.sourceforge.net/
+TERMUX_PKG_DESCRIPTION="Device firmware update (DFU) USB programmer"
+TERMUX_PKG_LICENSE="GPL-2.0"
+TERMUX_PKG_MAINTAINER="ihsakashi <yuvch122@gmail.com>"
+TERMUX_PKG_VERSION=0.10
+TERMUX_PKG_SRCURL=http://dfu-util.sourceforge.net/releases/dfu-util-${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=a03dc58dfc79c056819c0544b2a5970537566460102b3d82cfb038c60e619b42
+TERMUX_PKG_DEPENDS="libusb"
+TERMUX_PKG_BUILD_IN_SRC=true
