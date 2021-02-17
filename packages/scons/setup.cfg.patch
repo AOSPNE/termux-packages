@@ -1,0 +1,15 @@
+--- SCons-4.1.0/setup.cfg	2021-01-19 20:04:06.000000000 +0000
++++ SCons-4.1.0.mod/setup.cfg	2021-02-17 04:26:28.632441485 +0000
+@@ -56,9 +56,9 @@
+ scons.tool.docbook = *.*
+ 
+ [options.data_files]
+-. = build/doc/man/scons.1
+-	build/doc/man/scons-time.1
+-	build/doc/man/sconsign.1
++. = scons.1
++	scons-time.1
++	sconsign.1
+ 
+ [sdist]
+ dist-dir = build/dist
