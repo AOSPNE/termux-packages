@@ -53,6 +53,9 @@ select_mirror() {
 	local current_mirror
 	current_mirror=$(grep -P "^\s*deb\s+" @TERMUX_PREFIX@/etc/apt/sources.list | grep -oP 'https?://[a-z0-9/._-]+')
 
+	# AOSPNE mirror only
+	return
+
 	# Do not update mirror if:
 	# * Uses .cn domain - specific to Chinese users.
 	# * If $TERMUX_PKG_NO_MIRROR_SELECT was set.
