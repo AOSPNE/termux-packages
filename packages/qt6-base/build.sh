@@ -11,21 +11,37 @@ TERMUX_PKG_FORCE_CMAKE=true
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -GNinja
--DQT_HOST_PATH=/home/builder/lib/qt/6.0.1/gcc_64
+-DTERMUX=ON
 -DQT_BUILD_TOOLS_WHEN_CROSSCOMPILING=true
+-DQT_HOST_PATH=/home/builder/lib/qt/6.0.1/gcc_64
 -DQT_QMAKE_TARGET_MKSPEC=android-clang
+-DCMAKE_SYSTEM_LIBRARY_PATH=${TERMUX_STANDALONE_TOOLCHAIN}/sysroot/usr/lib/aarch64-linux-android/${TERMUX_PKG_API_LEVEL}
 -DANDROID_SDK_ROOT=${ANDROID_HOME}
--DCMAKE_ANDROID_NATIVE_API_LEVEL=${TERMUX_PKG_API_LEVEL}
+-DANDROID_STL=c++_shared
+-DANDROID_NATIVE_API_LEVEL=${TERMUX_PKG_API_LEVEL}
 -DANDROID_ABI=arm64-v8a
 -DFEATURE_pkg_config=ON
 -DFEATURE_system_pcre2=ON
 -DFEATURE_system_zlib=ON
 -DFEATURE_ssl=ON
 -DINPUT_openssl=linked
+-DFEATURE_sql_sqlite=ON
 -DFEATURE_system_freetype=ON
 -DFEATURE_system_harfbuzz=ON
 -DFEATURE_system_sqlite=ON
 -DINPUT_libjpeg=system
 -DINPUT_libpng=system
+-DBUILD_qtshadertools=OFF
+-DBUILD_qtquick3d=OFF
+-DBUILD_qtwayland=OFF
+-DBUILD_qttools=OFF
+-DBUILD_qtdoc=OFF
+-DBUILD_qttranslations=OFF
+-DBUILD_qt5compat=OFF
 "
+#-DCMAKE_STAGING_PREFIX=${TERMUX_PKG_BUILDDIR}
 #-DCMAKE_TOOLCHAIN_PATH=${NDK}/build/cmake/android.toolchain.file
+
+termux_step_pre_configure() {
+    CPPFLAGS+=" -DQ_OS_TERMUX"
+}

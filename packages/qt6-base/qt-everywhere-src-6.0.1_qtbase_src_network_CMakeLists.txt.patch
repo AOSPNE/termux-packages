@@ -1,0 +1,24 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/network/CMakeLists.txt	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/network/CMakeLists.txt	2021-02-21 01:27:18.328696744 +0000
+@@ -387,18 +387,18 @@
+         ssl/qsslsocket_mac_shared.cpp
+ )
+ 
+-qt_internal_extend_target(Network CONDITION ANDROID AND QT_FEATURE_openssl AND QT_FEATURE_ssl AND NOT ANDROID_EMBEDDED
++qt_internal_extend_target(Network CONDITION ANDROID AND QT_FEATURE_openssl AND QT_FEATURE_ssl AND NOT ANDROID_EMBEDDED AND NOT TERMUX
+     SOURCES
+         ssl/qsslsocket_openssl_android.cpp
+ )
+ 
+-qt_internal_extend_target(Network CONDITION ANDROID AND QT_FEATURE_openssl AND QT_FEATURE_openssl_linked AND QT_FEATURE_ssl AND (build_pass OR single_android_abi)
++qt_internal_extend_target(Network CONDITION ANDROID AND QT_FEATURE_openssl AND QT_FEATURE_openssl_linked AND QT_FEATURE_ssl AND (build_pass OR single_android_abi) AND NOT TERMUX
+     LIBRARIES
+         crypto_${CMAKE_SYSTEM_PROCESSOR}
+         ssl_${CMAKE_SYSTEM_PROCESSOR}
+ )
+ 
+-qt_internal_extend_target(Network CONDITION QT_FEATURE_openssl AND QT_FEATURE_openssl_linked AND QT_FEATURE_ssl AND NOT ANDROID
++qt_internal_extend_target(Network CONDITION QT_FEATURE_openssl AND QT_FEATURE_openssl_linked AND QT_FEATURE_ssl AND (TERMUX OR NOT ANDROID)
+     LIBRARIES
+         WrapOpenSSL::WrapOpenSSL
+     PRIVATE_MODULE_INTERFACE

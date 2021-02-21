@@ -1,0 +1,13 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/corelib/Qt6AndroidMacros.cmake	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/corelib/Qt6AndroidMacros.cmake	2021-02-21 02:47:50.820924455 +0000
+@@ -249,7 +249,9 @@
+ 
+ if(NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
+     function(qt_android_apply_arch_suffix)
+-        qt6_android_apply_arch_suffix(${ARGV})
++        if (NOT TERMUX)
++            qt6_android_apply_arch_suffix(${ARGV})
++        endif()
+     endfunction()
+ endif()
+ 

@@ -1,0 +1,20 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/network/ssl/ssl.pri	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/network/ssl/ssl.pri	2021-02-21 01:37:15.340724989 +0000
+@@ -95,7 +95,7 @@
+ 
+         darwin:SOURCES += ssl/qsslsocket_mac_shared.cpp
+ 
+-        android:!android-embedded: SOURCES += ssl/qsslsocket_openssl_android.cpp
++        android:!android-embedded:!termux SOURCES += ssl/qsslsocket_openssl_android.cpp
+ 
+         # Add optional SSL libs
+         # Static linking of OpenSSL with msvc:
+@@ -105,7 +105,7 @@
+         #   - configure: -openssl -openssl-linked -I <OPENSSL_DIR>\include -L <OPENSSL_DIR>\lib\VC\static OPENSSL_LIBS="-lUser32 -lAdvapi32 -lGdi32" OPENSSL_LIBS_DEBUG="-lssleay32MDd -llibeay32MDd" OPENSSL_LIBS_RELEASE="-lssleay32MD -llibeay32MD"
+ 
+         qtConfig(openssl-linked): {
+-            android {
++            android:!termux {
+                 build_pass|single_android_abi: LIBS_PRIVATE += -lssl_$${QT_ARCH} -lcrypto_$${QT_ARCH}
+             } else: QMAKE_USE_FOR_PRIVATE += openssl
+         } else: \

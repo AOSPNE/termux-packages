@@ -1,0 +1,11 @@
+--- qt-everywhere-src-6.0.1/qtbase/cmake/QtExecutableHelpers.cmake	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/cmake/QtExecutableHelpers.cmake	2021-02-21 21:23:00.036210053 +0000
+@@ -19,7 +19,7 @@
+         set(arg_INSTALL_DIRECTORY "${INSTALL_BINDIR}")
+     endif()
+ 
+-    if (ANDROID)
++    if (ANDROID AND NOT TERMUX)
+         add_library("${name}" MODULE)
+         qt_android_apply_arch_suffix("${name}")
+         qt_android_generate_deployment_settings("${name}")

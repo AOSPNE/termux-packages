@@ -1,0 +1,13 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/tools/bootstrap/CMakeLists.txt	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/tools/bootstrap/CMakeLists.txt	2021-02-21 22:51:13.448457770 +0000
+@@ -170,6 +170,10 @@
+         ../../corelib/io/qfilesystemiterator_unix.cpp
+         ../../corelib/io/qfsfileengine_unix.cpp
+         ../../corelib/kernel/qcore_unix.cpp
++)
++
++qt_internal_extend_target(Bootstrap CONDITION UNIX AND NOT ANDROID
++    SOURCES
+         ../../corelib/kernel/qsharedmemory_posix.cpp
+         ../../corelib/kernel/qsharedmemory_systemv.cpp
+         ../../corelib/kernel/qsharedmemory_unix.cpp

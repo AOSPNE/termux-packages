@@ -1,0 +1,20 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/network/configure.json	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/network/configure.json	2021-02-21 01:32:11.832710637 +0000
+@@ -110,7 +110,7 @@
+                 },
+                 {
+                     "libs": "-lssl_arm64-v8a -lcrypto_arm64-v8a",
+-                    "condition": "config.android"
++                    "condition": "config.android && !config.termux"
+                 },
+                 {
+                     "libs": "-lssl -lcrypto",
+@@ -447,7 +447,7 @@
+     "report": [
+         {
+             "type": "note",
+-            "condition": "!config.android && features.openssl-linked && libs.openssl.source != 0
++            "condition": "(!config.android || config.termux) && features.openssl-linked && libs.openssl.source != 0
+                           && input.openssl.prefix == '' && input.openssl.libs == '' && input.openssl.libs.debug == ''",
+             "message": "When linking against OpenSSL, you can override the default
+ library names through OPENSSL_LIBS.

@@ -1,0 +1,11 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/network/ssl/qsslsocket_p.h	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/network/ssl/qsslsocket_p.h	2021-02-21 01:51:01.176763875 +0000
+@@ -207,7 +207,7 @@
+ private:
+     static bool ensureLibraryLoaded();
+     static void ensureCiphersAndCertsLoaded();
+-#if defined(Q_OS_ANDROID) && !defined(Q_OS_ANDROID_EMBEDDED)
++#if defined(Q_OS_ANDROID) && !defined(Q_OS_ANDROID_EMBEDDED) && !defined(Q_OS_TERMUX)
+     static QList<QByteArray> fetchSslCertificateData();
+ #endif
+ 

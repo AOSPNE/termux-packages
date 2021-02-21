@@ -1,11 +1,11 @@
 --- qt-everywhere-src-6.0.1/qtbase/configure.json	2021-01-26 18:29:22.000000000 +0000
-+++ qt-everywhere-src-6.0.1.mod/qtbase/configure.json	2021-02-19 02:53:12.244589387 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/configure.json	2021-02-21 00:01:04.856460021 +0000
 @@ -760,7 +760,7 @@
          },
          "pkg-config": {
              "label": "Using pkg-config",
 -            "autoDetect": "!config.darwin && !config.win32 && !config.android",
-+            "autoDetect": "!config.darwin && !config.win32",
++            "autoDetect": "!config.darwin && !config.win32 && (!config.android && !config.termux)",
              "condition": "tests.pkg-config",
              "output": [
                  "publicFeature",

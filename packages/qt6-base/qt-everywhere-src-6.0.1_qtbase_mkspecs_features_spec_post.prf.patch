@@ -1,0 +1,11 @@
+--- qt-everywhere-src-6.0.1/qtbase/mkspecs/features/spec_post.prf	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/mkspecs/features/spec_post.prf	2021-02-20 23:57:23.540449464 +0000
+@@ -45,6 +45,8 @@
+     }
+ }
+ 
++QMAKE_PLATFORM = termux $$QMAKE_PLATFORM
++
+ CONFIG += $$QMAKE_PLATFORM
+ 
+ isEmpty(QMAKE_COMPILER) {

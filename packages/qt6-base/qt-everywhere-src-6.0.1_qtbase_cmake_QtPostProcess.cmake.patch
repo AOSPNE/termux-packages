@@ -1,0 +1,11 @@
+--- qt-everywhere-src-6.0.1/qtbase/cmake/QtPostProcess.cmake	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/cmake/QtPostProcess.cmake	2021-02-21 21:26:26.448223157 +0000
+@@ -8,7 +8,7 @@
+ # Needs to run after qt_internal_create_depends_files.
+ qt_create_tools_config_files()
+ 
+-if (ANDROID)
++if (ANDROID AND NOT TERMUX)
+     qt_modules_process_android_dependencies()
+ endif()
+ 

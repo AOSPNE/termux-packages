@@ -1,0 +1,11 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/network/ssl/qsslsocket_openssl.cpp	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/network/ssl/qsslsocket_openssl.cpp	2021-02-21 01:46:14.328750365 +0000
+@@ -1024,7 +1024,7 @@
+     QStringList nameFilters;
+     QList<QByteArray> directories;
+     QSsl::EncodingFormat platformEncodingFormat;
+-# ifndef Q_OS_ANDROID
++# if !defined(Q_OS_ANDROID) || defined(Q_OS_TERMUX)
+     directories = unixRootCertDirectories();
+     nameFilters << QLatin1String("*.pem") << QLatin1String("*.crt");
+     platformEncodingFormat = QSsl::Pem;

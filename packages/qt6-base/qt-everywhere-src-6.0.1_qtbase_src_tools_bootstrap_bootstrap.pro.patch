@@ -1,0 +1,26 @@
+--- qt-everywhere-src-6.0.1/qtbase/src/tools/bootstrap/bootstrap.pro	2021-01-26 18:29:22.000000000 +0000
++++ qt-everywhere-src-6.0.1.mod/qtbase/src/tools/bootstrap/bootstrap.pro	2021-02-21 22:50:57.076456976 +0000
+@@ -116,16 +116,17 @@
+            ../../xml/dom/qdom.cpp
+ 
+ unix:SOURCES += ../../corelib/kernel/qcore_unix.cpp \
+-                ../../corelib/kernel/qsharedmemory_posix.cpp \
+-                ../../corelib/kernel/qsharedmemory_systemv.cpp \
+-                ../../corelib/kernel/qsharedmemory_unix.cpp \
+-                ../../corelib/kernel/qsystemsemaphore_posix.cpp \
+-                ../../corelib/kernel/qsystemsemaphore_systemv.cpp \
+-                ../../corelib/kernel/qsystemsemaphore_unix.cpp \
+                 ../../corelib/io/qfilesystemengine_unix.cpp \
+                 ../../corelib/io/qfilesystemiterator_unix.cpp \
+                 ../../corelib/io/qfsfileengine_unix.cpp
+ 
++unix:!android:SOURCES += ../../corelib/kernel/qsharedmemory_posix.cpp \
++                        ../../corelib/kernel/qsharedmemory_systemv.cpp \
++                        ../../corelib/kernel/qsharedmemory_unix.cpp \
++                        ../../corelib/kernel/qsystemsemaphore_posix.cpp \
++                        ../../corelib/kernel/qsystemsemaphore_systemv.cpp \
++                        ../../corelib/kernel/qsystemsemaphore_unix.cpp
++
+ win32:SOURCES += ../../corelib/global/qoperatingsystemversion_win.cpp \
+                  ../../corelib/io/qfilesystemengine_win.cpp \
+                  ../../corelib/io/qfilesystemiterator_win.cpp \
